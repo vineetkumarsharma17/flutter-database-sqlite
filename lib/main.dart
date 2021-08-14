@@ -1,17 +1,21 @@
+import 'package:add_delete_edit_record_sqlite/addEmployee.dart';
 import 'package:flutter/material.dart';
 
 void main(){
-  runApp(MaterialApp(
-    home: HomePage(),
-  ));
+  runApp(MyApp());
 }
-// class MyApp extends StatelessWidget {
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//
-//     );
-//   }
-// }
+class MyApp extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: AddRecords(),
+    );
+  }
+}
+TextStyle ts=TextStyle(
+  fontSize: 24,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,24 +23,44 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Employee Record"),
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-              onPressed: (){
-              },
-              child: Text("Add Employee"),
-          ),
-          ElevatedButton(
-            onPressed: (){
-            },
-            child: Text("Search Employee"),
-          ),
-          ElevatedButton(
-            onPressed: (){
-            },
-            child: Text("Add Employee"),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 300,
+              height: 60,
+              child: ElevatedButton(
+                  onPressed: (){
+                  },
+                  child: Text("Add Employee",style: ts,),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              width: 300,
+              height: 60,
+              child: ElevatedButton(
+                onPressed: (){
+                },
+                child: Text("Search Employee",style: ts,),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              width: 300,
+              height: 60,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                 // backgroundColor: MaterialStateProperty.all(v)
+                ),
+                onPressed: (){
+                },
+                child: Text("View all employee",style: ts,),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
