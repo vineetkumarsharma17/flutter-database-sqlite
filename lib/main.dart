@@ -1,4 +1,5 @@
 import 'package:add_delete_edit_record_sqlite/addEmployee.dart';
+import 'package:add_delete_edit_record_sqlite/searchdata.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -7,7 +8,8 @@ void main(){
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AddRecords(),
+      debugShowCheckedModeBanner: false,
+      home: SearchData(),
     );
   }
 }
@@ -32,6 +34,7 @@ class HomePage extends StatelessWidget {
               height: 60,
               child: ElevatedButton(
                   onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>AddRecords()));
                   },
                   child: Text("Add Employee",style: ts,),
               ),
