@@ -1,3 +1,5 @@
+import 'package:add_delete_edit_record_sqlite/showAll.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddRecords extends StatefulWidget {
@@ -8,11 +10,20 @@ class AddRecords extends StatefulWidget {
 class _AddRecordsState extends State<AddRecords> {
    String _Gender='';
    var q=null;
+   TextEditingController name=TextEditingController();
+   TextEditingController email=TextEditingController();
+   TextEditingController mobile=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Add record"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.pop(context);
+        },
+        child: Icon(CupertinoIcons.back),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -34,6 +45,7 @@ class _AddRecordsState extends State<AddRecords> {
               ),
                 margin: EdgeInsets.only(left: 20,right: 20,top: 30),
                 child: TextField(
+                  controller: name,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -58,6 +70,7 @@ class _AddRecordsState extends State<AddRecords> {
                 ),
                 margin: EdgeInsets.only(left: 20,right: 20,top: 30),
                 child: TextField(
+                  controller: email,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                       border: InputBorder.none,
@@ -82,6 +95,7 @@ class _AddRecordsState extends State<AddRecords> {
                 ),
                 margin: EdgeInsets.only(left: 20,right: 20,top: 30),
                 child: TextField(
+                  controller: mobile,
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                       border: InputBorder.none,
@@ -224,6 +238,15 @@ class _AddRecordsState extends State<AddRecords> {
                   fontSize: 22
                 ),),
                 onPressed: (){
+                  Employee e=Employee(
+                      fname: name.text,
+                      email: email.text,
+                    mobile: mobile.text,
+                    gender: _Gender,
+                    qualification: q,
+                  );
+                  Employee.allData.add(e);
+                  print("Added");
 
                 },
                 style: ElevatedButton.styleFrom(

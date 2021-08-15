@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class SearchData extends StatefulWidget {
   const SearchData({Key? key}) : super(key: key);
@@ -12,6 +13,12 @@ class _SearchDataState extends State<SearchData> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Search record"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.pop(context);
+        },
+        child: Icon(CupertinoIcons.back),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
